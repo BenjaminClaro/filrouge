@@ -3,10 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code {  padding: 2px 6px; }
-</style>
+
 
 <div class="example-wrapper">
 
@@ -26,8 +23,8 @@
 
 
 
-                        <div class="col-3 d-none d-md-block mt-3 hover">' . {{categories.libelle}} . '<a href="plat.php?id_categorie='. $categorie->id .'"><img src="../assets/img/images_the_district/category/' . $categorie->image . '" alt="' . $categorie->libelle . '" class="img-fluid img-thumbnail"></a></div>;
-                        <div class="col-1"> </div>;
+                        <div class="col-3 d-none d-md-block mt-3 hover"> {{categories.libelle}} <a href="plat.php?id_categorie='. $categorie->id .'"><img src="{{asset('images/'~categories.image)}}" alt="{{categories.libelle}}" class="img-fluid img-thumbnail"></a></div>
+                        <div class="col-1"> </div>
 
                         
                     {% endfor %}
@@ -39,7 +36,7 @@
         <div class="text font-weight-bold h2 mt-2">Plats :</div>
         <div class="row ">
 
-                {% for plats in plat %}
+{#                {% for plats in plat %}
 
 
 
@@ -49,7 +46,7 @@
                         echo '<div class="d-block d-md-none"><a href="commande.php?id= ' .$acceuilplat->id_plat .'"><img src="../assets/img/images_the_district/food/' . $acceuilplat->image . '" alt="'. $acceuilplat->libelle .'" class="img-fluid img-thumbnail"><br>' . $acceuilplat->libelle . '</a></div>';
                         
                {% endfor %}             
-        </div>
+#}        </div>
 
         <div class="pb-5"></div>
 
