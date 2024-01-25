@@ -23,7 +23,7 @@
 
 
 
-                        <div class="col-3 d-none d-md-block mt-3 hover"> {{categories.libelle}} <a href="plat.php?id_categorie='. $categorie->id .'"><img src="{{asset('images/'~categories.image)}}" alt="{{categories.libelle}}" class="img-fluid img-thumbnail"></a></div>
+                        <div class="col-3 d-none d-md-block mt-3 hover"> {{categories.libelle}} <a href="{{ path('app_plats_id', {'categorie_id': categories.id} )}}"><img src="{{asset('images/'~categories.image)}}" alt="{{categories.libelle}}" class="img-fluid img-thumbnail"></a></div>
                         <div class="col-1"> </div>
 
                         
@@ -36,17 +36,17 @@
         <div class="text font-weight-bold h2 mt-2">Plats :</div>
         <div class="row ">
 
-{#                {% for plats in plat %}
+               {% for plats in plat %}
 
 
 
 
-                        echo '<div class="col-3 d-none d-md-block ">' . $acceuilplat->libelle . '<a href="commande.php?id= '. $acceuilplat->id_plat . ' "><img src="../assets/img/images_the_district/food/' . $acceuilplat->image . '" alt="'. $acceuilplat->libelle .'" class="img-fluid img-thumbnail"></a></div>';
-                        echo '<div class="col-1"> </div>';
-                        echo '<div class="d-block d-md-none"><a href="commande.php?id= ' .$acceuilplat->id_plat .'"><img src="../assets/img/images_the_district/food/' . $acceuilplat->image . '" alt="'. $acceuilplat->libelle .'" class="img-fluid img-thumbnail"><br>' . $acceuilplat->libelle . '</a></div>';
+                        <div class="col-3 d-none d-md-block "> {{plats.libelle}} <a href="commande.php?id= '. $acceuilplat->id_plat . ' "><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"></a></div>
+                        <div class="col-1"> </div>
+                        <div class="d-block d-md-none"><a href="commande.php?id= ' .$acceuilplat->id_plat .'"><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"><br>{{plats.libelle}}</a></div>
                         
                {% endfor %}             
-#}        </div>
+        </div>
 
         <div class="pb-5"></div>
 

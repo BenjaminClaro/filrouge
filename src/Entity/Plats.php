@@ -2,35 +2,35 @@
 
 namespace App\Entity;
 
-use App\Repository\PlatRepository;
+use App\Repository\PlatsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PlatRepository::class)]
-class Plat
+#[ORM\Entity(repositoryClass: PlatsRepository::class)]
+class Plats
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?float $prix = null;
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    private ?string $prix = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?categorie $id_categorie = null;
+    #[ORM\Column]
+    private ?bool $active = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $active = null;
+    #[ORM\ManyToOne(inversedBy: 'plats')]
+    private ?categories $categorie = null;
 
     public function getId(): ?int
     {
@@ -61,12 +61,12 @@ class Plat
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): static
+    public function setPrix(string $prix): static
     {
         $this->prix = $prix;
 
@@ -85,26 +85,26 @@ class Plat
         return $this;
     }
 
-    public function getIdCategorie(): ?categorie
-    {
-        return $this->id_categorie;
-    }
-
-    public function setIdCategorie(?categorie $id_categorie): static
-    {
-        $this->id_categorie = $id_categorie;
-
-        return $this;
-    }
-
-    public function getActive(): ?string
+    public function isActive(): ?bool
     {
         return $this->active;
     }
 
-    public function setActive(string $active): static
+    public function setActive(bool $active): static
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?categories
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?categories $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
