@@ -24,7 +24,7 @@
                             {{plats.description}}
                         </p>
 
-                        <a href="/commande/{{plats.id}}" class="btn btn-primary">Commander</a> {{plats.prix}}€
+                        <a href="{{ path('app_panier_add', {'plats_id': plats.id}) }}" class="btn btn-primary">Commander</a> {{plats.prix}}€
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                         <p class="card-text">
                             {{plats.description}} 
                         </p>
-                        <a href="commande.php?id=<?=$catplat->id?>" class="btn btn-primary">Commander</a> {{plats.prix}}€
+                        <a href="{{ path('app_panier_add', {'plats_id': plats.id}) }}" class="btn btn-primary">Commander</a> {{plats.prix}}€
                     </div>
                 </div>
 

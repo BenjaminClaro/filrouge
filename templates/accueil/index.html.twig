@@ -7,6 +7,8 @@
 
 <div class="example-wrapper">
 
+
+
     <div class="para"></div>
 
 
@@ -41,9 +43,9 @@
 
 
 
-                        <div class="col-3 d-none d-md-block "> {{plats.libelle}} <a href="commande.php?id= '. $acceuilplat->id_plat . ' "><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"></a></div>
+                        <div class="col-3 d-none d-md-block "> {{plats.libelle}} <a href="{{ path('app_panier_add', {'plats_id': plats.id}) }}"><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"></a></div>
                         <div class="col-1"> </div>
-                        <div class="d-block d-md-none"><a href="commande.php?id= ' .$acceuilplat->id_plat .'"><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"><br>{{plats.libelle}}</a></div>
+                        <div class="d-block d-md-none"><a href="{{ path('app_panier_add', {'plats_id': plats.id}) }}"><img src="{{asset('images/'~plats.image)}}" alt="{{plats.libelle}}" class="img-fluid img-thumbnail"><br>{{plats.libelle}}</a></div>
                         
                {% endfor %}             
         </div>

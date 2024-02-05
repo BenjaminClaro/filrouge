@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+
+
+    {% set total = null %}
+
+    {% for item in panier %}
+    {% set total = total + (item.plat.prix * item.quantité) %}
+    {% endfor %}
+    <h1>Total à payer : {{total}} €</h1>
+
+
+            <div class="col">
+                <label for="livraison">Adresse de livraison</label>
+                <input type="text" class="form-control" name="livraison" id="livraison" required>
+            </div>
+
+            <div class="col">
+                <label for="facturation">Adresse de facturation</label>
+                <input type="text" class="form-control" name="facturation" id="facturation" required>
+            </div>
+
+            <div class="col">
+                <label for="paiement">Mode de paiement</label>
+                <input type="text" class="form-control" name="paiement" id="paiement" required>
+            </div>
+
+    {{ form_start(form) }}
+
+
+
+        {{ form_row(form.total, {'attr': {'value': total }})}}
+
+
+
+
+
+        
+        {{ form_row(form.agreeTerms) }}
+
+        <button type="submit" class="btn-main">Confirmer</button>
+    {{ form_end(form) }}
+    <div class="mb-5"></div>
+
+
+
+
+</div>
+{% endblock %}

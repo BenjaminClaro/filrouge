@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Utilisateur;
 use App\Entity\Categories;
 use App\Entity\Plats;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -79,6 +80,10 @@ class AppFixtures extends Fixture
                 -> setactive(1)
                 ->setCategorie($categorie3);
         $manager->persist($plat5);
+
+
+
+
 
 
 

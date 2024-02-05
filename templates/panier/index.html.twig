@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>PANIER</h1>
+
+
+    {% if panier|length <= 0 %}
+
+        <div>
+        
+            <p>Votre panier est vide</p>
+
+        </div>
+
+    {% else %}
+        {% set total = null %}
+        {% for item in panier %}
+        {% set total = total + (item.plat.prix * item.quantité) %}
+        <div class="row">
+
+            <img class="mb-5 col-6" src="{{asset('images/'~item.plat.image)}}" alt="{{item.plat.libelle}}">
+            <div class="mb-5 col-5 card">
+        
+               <div class="card-body">
+                    <h4 class="card-title">{{item.plat.libelle}}</h4>
+                    <p class="card-text">
+                        {{item.plat.description}}
+                    </p>
+                    
+                    <div class="row count-imput ms-n3">
+                        Quantité : 
+                        <a href="{{ path('app_panier_decrease', {'plats_id': item.plat.id}) }}" class="btn btn-icon " data-decrement>-</a>
+                        <input class="col-5 form-control" type="number" value="{{item.quantité}}" readonly>
+                        <a href="{{ path('app_panier_add', {'plats_id': item.plat.id}) }}" class="btn btn-icon " data-increment>+</a>
+                    </div>
+
+                    <a href="{{ path('app_panier_remove', {'plats_id': item.plat.id}) }}" class="btn btn-primary">Retirer</a> Prix : {{item.plat.prix * item.quantité}} €
+                    
+                </div>
+            </div>
+        </div>
+
+        
+
+        {% endfor %}
+        <div>Total : {{total}} € <a href="{{ path('app_commande')}}" class="btn btn-primary">Commander</a></div>
+        
+                    
+    {% endif %}
+    <div class="pb-5"></div>
+</div>
+{% endblock %}
